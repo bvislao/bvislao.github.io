@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portafolio de Bryan Vislao Chávez, desarrollador de software de Perú." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio interactivo de Bryan Vislao Chávez, Software Engineer de Perú.">
   <title>Portafolio | Bryan Vislao Chávez</title>
   <style>
     :root {
-      --bg-color: #0d1117;
-      --card-color: #161b22;
-      --text-color: #e6edf3;
-      --accent-color: #58a6ff;
-      --muted-color: #8b949e;
+      --bg: #0d1117;
+      --text: #e6edf3;
+      --card: #161b22;
+      --accent: #58a6ff;
+      --muted: #8b949e;
+      --light-bg: #f6f8fa;
+      --light-text: #24292f;
+      --light-card: #ffffff;
+      --light-accent: #0366d6;
     }
 
     [data-theme="light"] {
-      --bg-color: #f6f8fa;
-      --card-color: #ffffff;
-      --text-color: #24292f;
-      --accent-color: #0366d6;
-      --muted-color: #57606a;
+      --bg: var(--light-bg);
+      --text: var(--light-text);
+      --card: var(--light-card);
+      --accent: var(--light-accent);
+      --muted: #57606a;
     }
 
     * {
@@ -27,13 +31,13 @@
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
-      transition: background 0.3s, color 0.3s, transform 0.3s;
+      transition: background 0.4s, color 0.4s;
     }
 
     body {
+      background: var(--bg);
+      color: var(--text);
       font-family: "Poppins", sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
       overflow-x: hidden;
     }
 
@@ -41,52 +45,45 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(13, 17, 23, 0.9);
-      backdrop-filter: blur(10px);
+      background: rgba(13,17,23,0.9);
+      backdrop-filter: blur(8px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 3rem;
       z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
 
     [data-theme="light"] header {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255,255,255,0.85);
     }
 
     header h1 {
-      font-size: 1.4rem;
-      color: var(--accent-color);
-      letter-spacing: 1px;
+      color: var(--accent);
+      font-size: 1.5rem;
     }
 
     nav a {
-      color: var(--text-color);
-      margin-left: 2rem;
+      color: var(--text);
       text-decoration: none;
-      font-weight: 500;
+      margin-left: 2rem;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      color: var(--accent-color);
+      color: var(--accent);
     }
 
     #theme-toggle {
+      margin-left: 2rem;
       background: none;
-      border: 2px solid var(--accent-color);
-      color: var(--accent-color);
+      border: 2px solid var(--accent);
+      color: var(--accent);
       border-radius: 50%;
-      padding: 0.5rem;
+      padding: 0.5rem 0.6rem;
       cursor: pointer;
       font-size: 1.1rem;
-      transition: all 0.3s;
-    }
-
-    #theme-toggle:hover {
-      background: var(--accent-color);
-      color: #fff;
-      transform: rotate(15deg);
     }
 
     section {
@@ -102,76 +99,71 @@
       justify-content: center;
       height: 100vh;
       text-align: center;
-      background: linear-gradient(135deg, var(--bg-color), var(--card-color));
+      background: linear-gradient(135deg, var(--bg), var(--card));
     }
 
     #inicio h2 {
-      font-size: 2.5rem;
-      color: var(--accent-color);
+      font-size: 2.4rem;
+      color: var(--accent);
       margin-bottom: 1rem;
     }
 
     #inicio p {
       font-size: 1.2rem;
-      color: var(--text-color);
+      color: var(--text);
       max-width: 600px;
+      margin-bottom: 2rem;
     }
 
     .btn {
-      display: inline-block;
-      margin-top: 2rem;
       padding: 0.8rem 1.5rem;
-      background: var(--accent-color);
+      background: var(--accent);
       color: #fff;
       border-radius: 8px;
       text-decoration: none;
       transition: transform 0.3s;
     }
 
-    .btn:hover {
-      transform: scale(1.05);
-    }
+    .btn:hover { transform: scale(1.05); }
 
-    .skills, .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
     }
 
     .card {
-      background: var(--card-color);
+      background: var(--card);
       padding: 1.5rem;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+    .card:hover { transform: translateY(-5px); }
 
-    .card h3 {
-      color: var(--accent-color);
-      margin-bottom: 0.5rem;
+    .skills-grid, .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
     }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      background: var(--bg-color);
-      color: var(--muted-color);
-      font-size: 0.9rem;
-      border-top: 1px solid var(--card-color);
+      padding: 2rem;
+      background: var(--bg);
+      color: var(--muted);
+      border-top: 1px solid var(--card);
     }
 
     @keyframes fadeInUp {
-      0% {opacity: 0; transform: translateY(20px);}
+      0% {opacity: 0; transform: translateY(30px);}
       100% {opacity: 1; transform: translateY(0);}
     }
 
     .fade-in {
-      animation: fadeInUp 1s ease forwards;
+      animation: fadeInUp 0.8s ease forwards;
     }
   </style>
 </head>
@@ -180,80 +172,76 @@
     <h1>&lt;Bryan Vislao /&gt;</h1>
     <nav>
       <a href="#inicio">Inicio</a>
-      <a href="#sobre">Sobre mí</a>
-      <a href="#proyectos">Proyectos</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#skills">Habilidades</a>
+      <a href="#educacion">Educación</a>
       <a href="#contacto">Contacto</a>
-      <button id="theme-toggle" title="Cambiar tema">🌙</button>
+      <button id="theme-toggle">🌙</button>
     </nav>
   </header>
 
   <section id="inicio">
     <h2 class="fade-in">Hola, soy Bryan Vislao Chávez 🇵🇪</h2>
-    <p class="fade-in">Desarrollador web y móvil apasionado por crear experiencias digitales innovadoras, eficientes y elegantes. Basado en Lima, Perú.</p>
-    <a href="#proyectos" class="btn fade-in">Ver Proyectos</a>
+    <p class="fade-in">Software Engineer con más de 8 años de experiencia en desarrollo web y backend, especializado en .NET, Java y soluciones financieras. Apasionado por la optimización de sistemas y la creación de software escalable.</p>
+    <a href="#experiencia" class="btn fade-in">Ver Experiencia</a>
   </section>
 
-  <section id="sobre">
-    <h2>Sobre mí</h2>
-    <p>Soy un desarrollador peruano con experiencia en desarrollo de aplicaciones web y móviles. Me especializo en tecnologías modernas como <b>React</b>, <b>Spring Boot</b> y <b>Node.js</b>.  
-    Mi enfoque se basa en crear soluciones escalables, seguras y fáciles de mantener, siempre con un toque creativo y un compromiso constante por aprender.</p>
+  <section id="experiencia">
+    <h2>Experiencia Profesional</h2>
+    <div class="card"><h3>Vívela</h3><p><b>Middle Software Developer</b> (mar 2023 - presente)<br>Lima, Perú<br>Desarrollo y mantenimiento de aplicaciones financieras con arquitectura moderna, microservicios y metodologías ágiles.</p></div>
+    <div class="card"><h3>Financiera Qapaq S.A.</h3><p><b>Software Engineer</b> (jun 2022 - mar 2023)<br>Desarrollo de sistemas de integración bancaria y automatización de procesos de negocio.</p></div>
+    <div class="card"><h3>Avances Tecnológicos (Cumbra Perú)</h3><p><b>Analista Programador .NET</b> (ene 2020 - jun 2022)<br>Diseño de soluciones empresariales basadas en .NET, SQL Server y Web Services.</p></div>
+    <div class="card"><h3>Stefanini Brasil (Scotiabank Perú)</h3><p><b>.NET Developer</b> (jul 2019 - ene 2020)</p></div>
+    <div class="card"><h3>Experis IT Perú (Mitsui Auto Finance)</h3><p><b>.NET Developer</b> (ene 2019 - jul 2019)</p></div>
+    <div class="card"><h3>Financiera Credinka</h3><p><b>Analista Programador de Sistemas</b> (feb 2017 - ene 2019)</p></div>
+    <div class="card"><h3>EAFC Maquisistema</h3><p><b>Analista Programador</b> (ene 2016 - feb 2017)</p></div>
+  </section>
 
-    <h3 style="margin-top:2rem;">Habilidades</h3>
-    <div class="skills">
-      <div class="card"><h3>Frontend</h3><p>HTML5, CSS3, JavaScript, React, Next.js</p></div>
-      <div class="card"><h3>Backend</h3><p>Java, Spring Boot, Node.js, REST APIs</p></div>
-      <div class="card"><h3>Bases de Datos</h3><p>PostgreSQL, MySQL, MongoDB</p></div>
-      <div class="card"><h3>DevOps</h3><p>Docker, GitHub Actions, AWS</p></div>
+  <section id="skills">
+    <h2>Tecnologías y Habilidades</h2>
+    <div class="skills-grid">
+      <div class="card"><h3>Lenguajes</h3><p>C#, Java, SQL, JavaScript</p></div>
+      <div class="card"><h3>Frameworks</h3><p>.NET, Spring Boot, React, Node.js</p></div>
+      <div class="card"><h3>Bases de Datos</h3><p>SQL Server, PostgreSQL, MySQL</p></div>
+      <div class="card"><h3>Dev Tools</h3><p>Git, GitHub, Docker, Visual Studio</p></div>
+      <div class="card"><h3>Metodologías</h3><p>Scrum, Integración Continua, CI/CD</p></div>
+      <div class="card"><h3>Aptitudes</h3><p>Microsoft Excel, Comunicación, Trabajo en equipo</p></div>
     </div>
   </section>
 
-  <section id="proyectos">
-    <h2>Proyectos</h2>
-    <div class="projects">
-      <div class="card">
-        <h3>Gestor de Cuentas Bancarias</h3>
-        <p>Aplicación con Spring Boot y React para sincronizar cuentas bancarias entre sistemas on-premise y cloud.</p>
-      </div>
-      <div class="card">
-        <h3>App de Registro de Asistencia</h3>
-        <p>Aplicación móvil en React Native con lectura de DNI, dashboards y generación de reportes.</p>
-      </div>
-      <div class="card">
-        <h3>Generador de Equipos Balanceados</h3>
-        <p>Script en Google Apps Script para crear equipos de fútbol balanceados en Google Sheets.</p>
-      </div>
-    </div>
+  <section id="educacion">
+    <h2>Educación</h2>
+    <div class="card"><h3>Universidad Tecnológica del Perú</h3><p>Ingeniería de Sistemas (2022)</p></div>
+    <div class="card"><h3>Instituto SISE</h3><p>Computación & Informática – Software & Sistemas (2012 - 2016)</p></div>
+    <div class="card"><h3>Cibertec</h3><p>Curso de Transact-SQL Server (2015)</p></div>
   </section>
 
   <section id="contacto">
     <h2>Contacto</h2>
-    <p>¿Tienes un proyecto o idea? Me encantaría conversar contigo.</p>
-    <p>📧 <a href="mailto:bvislao95@gmail.com" style="color:var(--accent-color);">bvislao95@gmail.com</a></p>
+    <p>📧 <a href="mailto:bvislao95@gmail.com" style="color:var(--accent);text-decoration:none;">bvislao95@gmail.com</a></p>
+    <p>💼 <a href="https://www.linkedin.com/in/bvislaochavez" target="_blank" style="color:var(--accent);">LinkedIn</a> |
+    🧑‍💻 <a href="https://github.com/bvislao" target="_blank" style="color:var(--accent);">GitHub</a></p>
   </section>
 
   <footer>
-    <p>© 2025 Bryan Vislao Chávez - Lima Perú</p>
+    <p>© 2025 Bryan Vislao Chávez - Software Engineer, Perú</p>
   </footer>
 
   <script>
     // Animación al hacer scroll
-    const elements = document.querySelectorAll('.card, h2, p, .btn');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('fade-in');
       });
     }, { threshold: 0.2 });
+    document.querySelectorAll('.card, h2, p, .btn').forEach(el => observer.observe(el));
 
-    elements.forEach(el => observer.observe(el));
-
-    // Tema claro/oscuro
+    // Tema oscuro/claro
     const toggle = document.getElementById('theme-toggle');
     const body = document.body;
-
-    // Cargar tema guardado
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) body.setAttribute('data-theme', savedTheme);
-    toggle.textContent = savedTheme === 'light' ? '☀️' : '🌙';
+    const saved = localStorage.getItem('theme');
+    if (saved) body.setAttribute('data-theme', saved);
+    toggle.textContent = saved === 'light' ? '☀️' : '🌙';
 
     toggle.addEventListener('click', () => {
       const current = body.getAttribute('data-theme');
